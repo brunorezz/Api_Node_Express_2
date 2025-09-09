@@ -24,7 +24,7 @@ class LivroController {
 
       res.status(200).send(livroResultados);
     } catch (erro) {
-      res.status(400).send({message: `${erro.message} - Id do livro não localizado.`});
+      res.status(400).send({ message: `${erro.message} - Id do livro não localizado.` });
     }
   }
 
@@ -36,7 +36,7 @@ class LivroController {
 
       res.status(201).send(livroResultado.toJSON());
     } catch (erro) {
-      res.status(500).send({message: `${erro.message} - falha ao cadastrar livro.`});
+      res.status(500).send({ message: `${erro.message} - falha ao cadastrar livro.` });
     }
   }
 
@@ -44,11 +44,11 @@ class LivroController {
     try {
       const id = req.params.id;
 
-      await livros.findByIdAndUpdate(id, {$set: req.body});
+      await livros.findByIdAndUpdate(id, { $set: req.body });
 
-      res.status(200).send({message: "Livro atualizado com sucesso"});
+      res.status(200).send({ message: "Livro atualizado com sucesso" });
     } catch (erro) {
-      res.status(500).send({message: erro.message});
+      res.status(500).send({ message: erro.message });
     }
   }
 
@@ -58,9 +58,9 @@ class LivroController {
 
       await livros.findByIdAndDelete(id);
 
-      res.status(200).send({message: "Livro removido com sucesso"});
+      res.status(200).send({ message: "Livro removido com sucesso" });
     } catch (erro) {
-      res.status(500).send({message: erro.message});
+      res.status(500).send({ message: erro.message });
     }
   }
 
@@ -68,7 +68,7 @@ class LivroController {
     try {
       const editora = req.query.editora;
 
-      const livrosResultado = await livros.find({"editora": editora});
+      const livrosResultado = await livros.find({ "editora": editora });
 
       res.status(200).send(livrosResultado);
     } catch (erro) {

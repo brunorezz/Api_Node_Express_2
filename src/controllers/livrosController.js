@@ -4,6 +4,7 @@ class LivroController {
 
   static listarLivros = async (req, res, next) => {
     try {
+//      throw new Error("Erro genérico de teste");
       const livrosResultado = await livros.find()
         .populate("autor")
         .exec();
@@ -54,6 +55,7 @@ class LivroController {
 
   static excluirLivro = async (req, res, next) => {
     try {
+
       const id = req.params.id;
 
       await livros.findByIdAndDelete(id);

@@ -1,10 +1,10 @@
-import livros from "../models/Livro.js";
+import { livros } from "../models/index.js";
 
 class LivroController {
 
   static listarLivros = async (req, res, next) => {
     try {
-//      throw new Error("Erro genérico de teste");
+      //      throw new Error("Erro genérico de teste");
       const livrosResultado = await livros.find()
         .populate("autor")
         .exec();

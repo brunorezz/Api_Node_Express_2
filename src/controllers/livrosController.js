@@ -70,10 +70,12 @@ class LivroController {
     try {
       const { editora, titulo } = req.query;
 
-      const livrosResultado = await livros.find({ 
-        editora: editora,
-        titulo: titulo
-      });
+      const busca = {};
+
+      if (editora) busca.editora = { $regex: editora, $options: "i" };
+      if (titulo) busca.titulo = { $regex: titulo, $options: "i" };
+
+      const livrosResultado = await livros.find({ ...busca });
 
       res.status(200).send(livrosResultado);
     } catch (erro) {
